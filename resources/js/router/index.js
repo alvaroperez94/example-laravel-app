@@ -2,20 +2,29 @@ import { createWebHistory, createRouter } from 'vue-router'
 import store from '@/store'
 
 /* Guest Component */
-const Login = () => import('@/components/Login.vue')
-const Register = () => import('@/components/Register.vue')
+const Login = () => import('@/components/auth/Login.vue')
+const Register = () => import('@/components/auth/Register.vue')
 /* Guest Component */
 
 /* Layouts */
-const DahboardLayout = () => import('@/components/layouts/Default.vue')
+const Menu = () => import('@/layouts/Default.vue')
 /* Layouts */
 
 /* Authenticated Component */
-const Dashboard = () => import('@/components/Dashboard.vue')
+const Dashboard = () => import('@/pages/Dashboard.vue')
 /* Authenticated Component */
 
 
 const routes = [
+    // {
+    //     name: "index",
+    //     path: "/",
+    //     component: Default,
+    //     meta: {
+    //         middleware: "guest",
+    //         title: `Inicio`
+    //     }
+    // },
     {
         name: "login",
         path: "/login",
@@ -35,21 +44,23 @@ const routes = [
         }
     },
     {
-        path: "/",
-        component: DahboardLayout,
+        name: "dashboard",
+        path: "/dashboard",
+        component: Dashboard,
         meta: {
-            middleware: "auth"
+            middleware: "auth",
+            title: `Dashboard`
         },
-        children: [
-            {
-                name: "dashboard",
-                path: '/',
-                component: Dashboard,
-                meta: {
-                    title: `Dashboard`
-                }
-            }
-        ]
+        // children: [
+        //     {
+        //         name: "dashboard",
+        //         path: '/',
+        //         component: Dashboard,
+        //         meta: {
+        //             title: `Dashboard`
+        //         }
+        //     }
+        // ]
     }
 ]
 
