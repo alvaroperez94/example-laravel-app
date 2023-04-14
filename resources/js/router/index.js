@@ -1,15 +1,16 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import store from '@/store'
 
-/* Guest Component */
+/* Auth Components */
 const Login = () => import('@/components/auth/Login.vue')
 const Register = () => import('@/components/auth/Register.vue')
-/* Guest Component */
+/* Auth Components */
 
-/* Authenticated Component */
+/* Pages */
 const Home = () => import('@/pages/Home.vue')
 const Dashboard = () => import('@/pages/Dashboard.vue')
-/* Authenticated Component */
+const Profile = () => import('@/pages/Profile.vue')
+/* Pages */
 
 const routes = [
     {
@@ -57,6 +58,15 @@ const routes = [
         //         }
         //     }
         // ]
+    },
+    {
+        name: "profile",
+        path: "/profile",
+        component: Profile,
+        meta: {
+            middleware: "auth",
+            title: `Profile`
+        }
     }
 ]
 

@@ -10,7 +10,10 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <router-link :to="{ name: 'home' }" class="nav-link">Inicio</router-link>
+                            <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
+                        </li>
+                        <li v-if="user.name" class="nav-item">
+                            <router-link :to="{ name: 'dashboard' }" class="nav-link">Dashboard</router-link>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -24,6 +27,7 @@
                                     {{ user.name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                                    <router-link :to="{ name: 'profile' }" class="dropdown-item">Profile</router-link>
                                     <a class="dropdown-item" href="javascript:void(0)" @click="logout">Logout</a>
                                 </div>
                             </li>
