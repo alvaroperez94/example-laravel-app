@@ -3,19 +3,24 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Example</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <router-link :to="{ name: 'index' }" class="nav-link">Inicio</router-link>
+                            <router-link :to="{ name: 'home' }" class="nav-link">Inicio</router-link>
                         </li>
                     </ul>
                     <div class="d-flex">
                         <ul class="navbar-nav">
+                            <li class="nav item">
+                                <router-link :to="{ name: 'login' }" class="nav-link">Login</router-link>
+                            </li>
                             <li class="nav-item dropdown">
-                                <a v-if="user.name" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ user.name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
@@ -34,22 +39,22 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 export default {
-    name:"default-layout",
-    data(){
+    name: "Menu",
+    data() {
         return {
-            user:this.$store.state.auth.user
+            user: this.$store.state.auth.user
         }
     },
-    methods:{
+    methods: {
         ...mapActions({
-            signOut:"auth/logout"
+            signOut: "auth/logout"
         }),
-        async logout(){
-            await axios.post('/logout').then(({data})=>{
+        async logout() {
+            await axios.post('/logout').then(({ data }) => {
                 this.signOut()
-                this.$router.push({name:"login"})
+                this.$router.push({ name: "login" })
             })
         }
     }

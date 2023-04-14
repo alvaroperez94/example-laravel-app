@@ -6,25 +6,21 @@ const Login = () => import('@/components/auth/Login.vue')
 const Register = () => import('@/components/auth/Register.vue')
 /* Guest Component */
 
-/* Layouts */
-const Menu = () => import('@/layouts/Default.vue')
-/* Layouts */
-
 /* Authenticated Component */
+const Home = () => import('@/pages/Home.vue')
 const Dashboard = () => import('@/pages/Dashboard.vue')
 /* Authenticated Component */
 
-
 const routes = [
-    // {
-    //     name: "index",
-    //     path: "/",
-    //     component: Default,
-    //     meta: {
-    //         middleware: "guest",
-    //         title: `Inicio`
-    //     }
-    // },
+    {
+        name: "home",
+        path: "/",
+        component: Home,
+        meta: {
+            middleware: "guest",
+            title: `Inicio`
+        }
+    },
     {
         name: "login",
         path: "/login",

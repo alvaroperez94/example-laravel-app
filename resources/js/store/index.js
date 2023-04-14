@@ -3,10 +3,10 @@ import createPersistedState from 'vuex-persistedstate'
 import auth from '@/store/auth'
 
 const store = createStore({
-    plugins:[
+    plugins: [
         createPersistedState()
     ],
-    modules:{
+    modules: {
         auth
     }
 })
