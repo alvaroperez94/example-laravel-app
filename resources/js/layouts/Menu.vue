@@ -15,10 +15,10 @@
                     </ul>
                     <div class="d-flex">
                         <ul class="navbar-nav">
-                            <li class="nav item">
+                            <li v-if="!user.name" class="nav item">
                                 <router-link :to="{ name: 'login' }" class="nav-link">Login</router-link>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li v-if="user.name" class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ user.name }}

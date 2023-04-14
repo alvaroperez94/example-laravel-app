@@ -1,4 +1,5 @@
 <template>
+    <Menu></Menu>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -16,12 +17,17 @@
 </template>
 
 <script>
+import GlobalComponents from '@/globalComponents.js'
+
 export default {
     name: "dashboard",
     data() {
         return {
             user: this.$store.state.auth.user
         }
+    },
+    components: {
+        ...GlobalComponents
     }
 }
 </script>
